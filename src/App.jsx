@@ -22,23 +22,25 @@ function App() {
       .catch((error) => {
         console.error("Error fetching products:", error);
       });
-  }, []); // empty dependency array = run once on mount
+  }, []); 
 
   return (
     <>
       <Navbar />
-      {/* Render product cards dynamically */}
-      {products.map((product) => (
-        <ProductCard
-          key={product.id}
-          image={product.image}
-          name={product.productName}
-          description={product.subTitle}
-          originalPrice={product.originalPrice}
-          discountedPrice={product.discountedPrice}
-          discountPercentage={product.offerPercentage}
-        />
-      ))}
+      <div className="product-container">
+        {products.map((product) => (
+          <ProductCard
+            key={product.id}
+            image={product.image}
+            name={product.productName}
+            description={product.subTitle}
+            originalPrice={product.originalPrice}
+            discountedPrice={product.discountedPrice}
+            discountPercentage={product.offerPercentage}
+            productType={product.productType}
+          />
+        ))}
+      </div>
     </>
   );
 }
