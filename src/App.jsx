@@ -1,7 +1,15 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import Navbar from './Components/Navbar';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ProductCard from './Components/ProductCard';
+import Home from './Components/Home';
+import FarmFresh from './Components/FarmFresh';
+import Cleaners from './Components/Cleaners';  // Renamed import
+import Cosmetics from './Components/Cosmetics';
+import DailyBasket from './Components/DailyBasket';
+import Decoratives from './Components/Decoratives';
+import Electronics from './Components/Electronics';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -22,12 +30,22 @@ function App() {
       .catch((error) => {
         console.error("Error fetching products:", error);
       });
-  }, []); 
+  }, []);
 
   return (
-    <>
+    <Router>
       <Navbar />
-      <div className="product-container">
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path='/farmfresh' element={<FarmFresh />} />
+        <Route path='/cleaners' element={<Cleaners />} />
+        <Route path='/cosmetics' element={<Cosmetics />} />
+        <Route path='/dailybasket' element={<DailyBasket />} />
+        <Route path='/decoratives' element={<Decoratives />} />
+        <Route path='/electronics' element={<Electronics />} />
+      </Routes>
+      {/* Show products only on the /farmfresh route */}
+      {/* <div className="product-container">
         {products.map((product) => (
           <ProductCard
             key={product.id}
@@ -40,8 +58,8 @@ function App() {
             productType={product.productType}
           />
         ))}
-      </div>
-    </>
+      </div> */}
+    </Router>
   );
 }
 

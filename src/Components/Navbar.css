@@ -13,4 +13,39 @@
     font-size: 24px;
     color: white;
   }
+  .navbar {
+    display: flex;
+    justify-content: space-around;
+    background-color: #f0f8ff;
+    padding: 10px;
+    align-items: center;
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: #0077b6;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 15px;
+    border-radius: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    background-color: #0077b6;
+    color: #fff;
+  }
+  
+  .nav-icon {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .home {
+    padding: 0 10px;
+  }
+  
+  .nav-link:not(:first-child) {
+    margin-left: 10px;
+  }
   
