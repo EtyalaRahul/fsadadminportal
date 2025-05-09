@@ -114,28 +114,6 @@ const Home = () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
-function deleteProduct() {
-
-  fetch(`http://localhost:8080/products/${deleteId}`, {
-    method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json',
-      'accept': 'application/json'
-    }
-  })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Failed to delete product');
-      }
-      alert('Product deleted successfully!');
-      setDeleteId('');
-      fetchProducts();
-    })
-    .catch(error => {
-      console.error('Error deleting product:', error);
-      alert('Error deleting product: ' + error.message);
-    });
-}
 
   const resetForm = () => {
     setFormData({
@@ -399,9 +377,9 @@ function deleteProduct() {
           <div className="loading-spinner"></div>
         </div>
       )}
-      <div className="product-list">
-      <input type='number' id='deleteId' value={deleteId} onChange={(e) => setDeleteId(e.target.value)} placeholder='Enter Product ID to delete' />
-      <button onClick={deleteProduct}>deleteProduct</button>
+      <div className='delete-container'> 
+        <input type='number' placeholder='Enter Product ID to delete' value={deleteId} onChange={(e) => setDeleteId(e.target.value)} />
+        
       </div>
     </div>
   );
